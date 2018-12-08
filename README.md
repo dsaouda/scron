@@ -23,6 +23,10 @@ Example of job definition:
 
 For more detail see https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format
 
+## Download
+
+Download the latest version in https://github.com/dsaouda/scron/releases or run `go get github.com/dsaouda`
+
 ## Run
 
 Create a file named *crontab* in the same directory as the binary then run `scron`
