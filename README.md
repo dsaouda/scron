@@ -1,7 +1,12 @@
 # scron
+
 Simple cron linux for any OS
 
-# Crontab expression
+## Why
+
+Especially for running on windows, but you can use it to run on linux if you want to run a command every second.
+
+## Crontab expression
 
 Example of job definition:
 
@@ -18,11 +23,11 @@ Example of job definition:
 
 For more detail see https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format
 
-# Run
+## Run
 
 Create a file named *crontab* in the same directory as the binary then run `scron`
 
-# Example crontab file for windows
+## Example crontab file for windows
 
 `* * * * * * echo %time% >> time.txt`
 
