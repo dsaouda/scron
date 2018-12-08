@@ -20,4 +20,10 @@ For more detail see https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression
 
 # Run
 
-Create a file named crontab in the same directory as the binary then run `scron`
+Create a file named *crontab* in the same directory as the binary then run `scron`
+
+# Example crontab file for windows
+
+`* * * * * * echo %time% >> time.txt`
+
+This cron print OS time every second
