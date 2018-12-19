@@ -2,6 +2,7 @@ package util
 
 import (
 	"bufio"
+	"github.com/robfig/cron"
 	"os"
 	"strings"
 )
@@ -25,11 +26,33 @@ func Crontab(cronFile string) []Cron {
 	scanner := bufio.NewScanner(file)
 
 	for scanner.Scan() {
-		expr := strings.Split(scanner.Text(), " ")
+		text := strings.TrimSpace(scanner.Text())
+
+		// ignorar linha em branco
+		if len(text) == 0 {
+			continue
+		}
+
+		// ignorar quando iniciar com comentário
+		substringFirstChar := string([]rune(text)[0])
+		if substringFirstChar == "#" {
+			continue
+		}
+
+		expr := strings.Split(text, " ")
+
+		if len(expr) < 6 {
+			continue
+		}
 
 		spec := strings.Join(expr[0:6], " ")
-		command := strings.Join(expr[6:], " ")
 
+		_, error := cron.Parse(spec)
+		if error != nil {
+			continue
+		}
+
+		command := strings.Join(expr[6:], " ")
 		s = append(s, Cron{Spec: spec, Command: command})
 	}
 
