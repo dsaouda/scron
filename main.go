@@ -10,9 +10,9 @@ import (
 func main() {
 	c := cron.New()
 
-	for _, cron := range scron.Crontab("crontab") {
-		fmt.Println("Int spec", cron.Spec, "command", cron.Command)
-		c.AddFunc(cron.Spec, cronFunc(cron))
+	for _, cronEntity := range scron.Crontab("crontab") {
+		fmt.Println("add spec=", cronEntity.Spec, "command=", cronEntity.Command)
+		c.AddFunc(cronEntity.Spec, cronFunc(cronEntity))
 	}
 
 	c.Run()
