@@ -21,11 +21,11 @@ Example of job definition:
 * *  *  *  *  *  command to be executed
 </pre>
 
-For more detail see https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format
+For more detail see <https://godoc.org/github.com/robfig/cron#hdr-CRON_Expression_Format>
 
 ## Download
 
-Download the latest version in https://github.com/dsaouda/scron/releases or run `go get github.com/dsaouda`
+Download the latest version in <https://github.com/dsaouda/scron/releases> or run `go get github.com/dsaouda`
 
 ## Run
 
