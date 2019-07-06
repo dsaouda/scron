@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// ShellRun cria uma interface de comunicação com CMD ou BASH
 func ShellRun(line string) (string, error) {
 	var out []byte
 	var err error
