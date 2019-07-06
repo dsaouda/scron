@@ -7,13 +7,13 @@ import (
 	"strings"
 )
 
-// Representa uma estrutura de cron
+// Cron representa uma estrutura de cron
 type Cron struct {
 	Spec string
 	Command string
 }
 
-// Trabalhar o arquivo de cron tab e gerar a estrura
+// Crontab lê o arquivo de cron tab e gerar a estrura para ser trabalhada
 func Crontab(cronFile string) []Cron {
 	file, err := os.Open(cronFile)
 
