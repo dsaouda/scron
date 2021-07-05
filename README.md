@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/acbfaf14f4a729614b5e/maintainability)](https://codeclimate.com/github/dsaouda/scron/maintainability)
+
 # scron
 
 Simple cron linux for any OS
