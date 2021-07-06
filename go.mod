@@ -1,5 +1,5 @@
-module crontab
+module github.com/dsaouda/scron
 
-require (
-	github.com/robfig/cron v0.0.0-20180505203441-b41be1df6967
-)
+go 1.16
+
+require github.com/robfig/cron v1.2.0

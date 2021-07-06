@@ -2,55 +2,62 @@ package util
 
 import (
 	"bufio"
+	"fmt"
 	"github.com/robfig/cron"
 	"os"
 	"strings"
 )
 
-// Cron representa uma estrutura de cron
+// Cron represents a cron structure
 type Cron struct {
-	Spec string
+	Spec    string
 	Command string
 }
 
-// Crontab lê o arquivo de cron tab e gerar a estrura para ser trabalhada
-func Crontab(cronFile string) []Cron {
+// Crontab read the crontab file and generate the structure to be worked on
+func Crontab(cronFile string) ([]Cron, error) {
 	file, err := os.Open(cronFile)
 
 	s := make([]Cron, 0)
 
 	if err != nil {
-		return []Cron{}
+		return nil, err
 	}
 
 	defer file.Close()
 
 	scanner := bufio.NewScanner(file)
 
+	line := 0
 	for scanner.Scan() {
+		line++
 		text := strings.TrimSpace(scanner.Text())
 
-		// ignorar linha em branco
+		// skip empty line
 		if len(text) == 0 {
+			fmt.Println("line", line, ": skip empty line")
 			continue
 		}
 
-		// ignorar quando iniciar com comentário
+		// skip comments
 		substringFirstChar := string([]rune(text)[0])
 		if substringFirstChar == "#" {
+			fmt.Println("line", line, ": skip comment")
 			continue
 		}
 
 		expr := strings.Split(text, " ")
 
 		if len(expr) < 6 {
+			fmt.Println("line", line, ": skip by pattern")
 			continue
 		}
 
 		spec := strings.Join(expr[0:6], " ")
 
-		_, error := cron.Parse(spec)
-		if error != nil {
+		_, err := cron.Parse(spec)
+		if err != nil {
+			fmt.Println("line", line, ": skip error parser -->", err)
 			continue
 		}
 
@@ -59,8 +66,8 @@ func Crontab(cronFile string) []Cron {
 	}
 
 	if err := scanner.Err(); err != nil {
-		return []Cron{}
+		return nil, err
 	}
 
-	return s
+	return s, nil
 }
