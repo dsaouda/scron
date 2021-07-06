@@ -1,4 +1,5 @@
-[![Maintainability](https://api.codeclimate.com/v1/badges/acbfaf14f4a729614b5e/maintainability)](https://codeclimate.com/github/dsaouda/scron/maintainability)
+[![Release](https://img.shields.io/github/v/release/dsaouda/scron.svg?style=for-the-badge)](https://github.com/dsaouda/scron/releases/latest)
+[![Go Report](https://goreportcard.com/badge/github.com/dsaouda/scron?style=for-the-badge)](https://goreportcard.com/report/github.com/dsaouda/scron)
 
 # scron
 

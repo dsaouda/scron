@@ -10,7 +10,19 @@ import (
 func main() {
 	c := cron.New()
 
-	for _, cronEntity := range scron.Crontab("crontab") {
+	cronlines, err := scron.Crontab("crontab")
+
+	if err != nil {
+		fmt.Println("Error: ", err)
+		return
+	}
+
+	if len(cronlines) == 0 {
+		fmt.Println("Error: No lines match cron pattern")
+		return
+	}
+
+	for _, cronEntity := range cronlines {
 		fmt.Println("add spec=", cronEntity.Spec, "command=", cronEntity.Command)
 		c.AddFunc(cronEntity.Spec, cronFunc(cronEntity))
 	}
